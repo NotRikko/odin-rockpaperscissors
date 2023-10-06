@@ -52,8 +52,10 @@ function game () {
         let result = playRound(playerChoice);
         playRound(playerChoice);
         console.log(playRound(playerChoice));
-        window.alert(result) 
-        if ""
+
+        theResult.textContent = result;
+        window.alert(result)
+        
     }
 
 
