@@ -19,49 +19,67 @@ function getComputerChoice() {
 
 
 
-
+let result =""
 
 function playRound (playerChoice) {
     const computerSelection = getComputerChoice();
-    const playerSelection = playerChoice;
+    const playerSelection = playerChoice.toLowerCase();
     if (computerSelection === playerSelection) {
-        return "Tie!"
+        return result= "Tie!"
     }
     else if (
         computerSelection === "rock" && playerSelection === "paper" || 
         computerSelection === "paper" && playerSelection === "scissors"  || 
         computerSelection ==="scissors" && playerSelection === "rock"
         )
-    {
-        return "Player Win!"
+    {   playerScore += 1
+        result= "Player Win!"
     }
     else if (
         computerSelection === "rock" && playerSelection === "scissors" ||
         computerSelection === "paper" && playerSelection === "rock" ||
         computerSelection === "scissors" && playerSelection === "paper"
         ) {
-            return "Computer Win!"
+            computerScore += 1
+            result = "Computer Win!" 
         }
 }   
 
-let playerChoice = prompt("Choose your attack");
-let result = playRound(playerChoice);
+
+const blank = document.getElementById("blank")
+
+let playerScore = 0
+let computerScore = 0
+
+let completedGames = 0
+let totalGames = 5
 function game () {
-    for (let i = 0; i<5; i++ ) {
+    for (let i = 0; i<totalGames; i++ ) {
         let playerChoice = prompt("Choose your attack");
-        let result = playRound(playerChoice);
         playRound(playerChoice);
-        console.log(playRound(playerChoice));
-
-        theResult.textContent = result;
-        window.alert(result)
-        
+        window.alert(result+"Player Score:"+playerScore+"Computer Score:"+computerScore);
+        completedGames += 1;
+        if (completedGames === totalGames) {
+            
+            if (playerScore > computerScore) {
+            return window.alert("Player Win!"), blank.textContent=("Player Win!")
+            }
+            else if (playerScore < computerScore) {
+            return window.alert("Computer Win!"), blank.textContent=("Computer Win!")
+            }
+            else return window.alert("It's a tie!"), blank.textContent=("Tie!")
+        }
     }
-
-
 }
-
 game();
+
+
+    
+
+
+
+
+
 
 
 /*function game() {
