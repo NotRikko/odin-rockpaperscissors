@@ -19,11 +19,33 @@ function getComputerChoice() {
 
 
 
-let result =""
+let result = ""
 
-function playRound (playerChoice) {
+let playerScore = 0
+let computerScore = 0
+
+
+let playerSelection = "";
+let playerRock = document.querySelector("#rock")
+let playerPaper = document.querySelector("#paper")
+let playerScissors = document.querySelector("#scissors")
+
+playerRock.addEventListener("click",() => {
+    playerSelection = "rock"
+});
+playerPaper.addEventListener("click", () => {
+    playerSelection= "paper"
+});
+playerScissors.addEventListener("click",() => {
+    playerSelection = "scissors"
+});
+
+playerRock.addEventListener("click", playRound);
+playerPaper.addEventListener("click", playRound);
+playerScissors=addEventListener("click", playRound);
+
+function playRound () {
     const computerSelection = getComputerChoice();
-    const playerSelection = playerChoice.toLowerCase();
     if (computerSelection === playerSelection) {
         return result= "Tie!"
     }
@@ -48,30 +70,6 @@ function playRound (playerChoice) {
 
 const blank = document.getElementById("blank")
 
-let playerScore = 0
-let computerScore = 0
-
-let completedGames = 0
-let totalGames = 5
-function game () {
-    for (let i = 0; i<totalGames; i++ ) {
-        let playerChoice = prompt("Choose your attack");
-        playRound(playerChoice);
-        window.alert(result+"Player Score:"+playerScore+"Computer Score:"+computerScore);
-        completedGames += 1;
-        if (completedGames === totalGames) {
-            
-            if (playerScore > computerScore) {
-            return window.alert("Player Win!"), blank.textContent=("Player Win!")
-            }
-            else if (playerScore < computerScore) {
-            return window.alert("Computer Win!"), blank.textContent=("Computer Win!")
-            }
-            else return window.alert("It's a tie!"), blank.textContent=("Tie!")
-        }
-    }
-}
-game();
 
 
     
