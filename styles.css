@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 100px;
+    gap: 60px;
 }
 
 #blank {
@@ -18,15 +18,23 @@
 
 .options {
     display: flex;
+    align-items: center;
     gap: 20px;
 }
 
 .playbutton {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
     padding: 25px;
     width: 100px;
     background-color: rgb(37, 37, 37);
     border-radius: 25px;
     border-color: whitesmoke;
+}
+
+#currentResult {
+    font-size: 30px;
 }
 .results {
     display: flex;
@@ -43,5 +51,8 @@
 }
 
 #gameOver {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     font-size: 30px;
 }
