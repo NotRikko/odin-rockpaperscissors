@@ -26,17 +26,31 @@ playerScissors.addEventListener("click", displayScore);
 
 let playerScore = 0;
 let computerScore = 0;
-const resultsSection = document.querySelector(".results");
+const resultsSection = document.querySelector("#gameOver");
 function displayScore() {
     if (playerScore === 5 || computerScore === 5 ) {
        let finalResult = document.createElement('div');
+       let playAgain = document.createElement('button');
+       playAgain.addEventListener ("click", () => {
+        playerScore =  0;
+        computerScore = 0;
+        playerScoreSection.textContent = 0;
+        computerScoreSection.textContent = 0;
+        finalResult.remove();
+        playAgain.remove();
+       });
         if (playerScore === 5) {
             finalResult.textContent = "Player Win!";
             resultsSection.appendChild(finalResult)
+            playAgain.textContent = "Play Again?"
+            resultsSection.appendChild(playAgain);
+
         }
         else {
         finalResult.textContent = "Computer Win!"  
         resultsSection.appendChild(finalResult)
+        playAgain.textContent = "Play Again?"
+        resultsSection.appendChild(playAgain);
         }
         
     }
@@ -44,6 +58,7 @@ function displayScore() {
 
 let playerScoreSection = document.querySelector("#playerScore");
 let computerScoreSection = document.querySelector("#computerScore");
+
 function getComputerChoice() {
     const computerChoices = ["rock", "paper", "scissors"];
     return computerChoices[Math.floor(Math.random() * computerChoices.length)];
